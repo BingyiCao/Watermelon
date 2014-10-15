@@ -7,16 +7,16 @@ import watermelon.sim.Point;
 import watermelon.sim.seed;
 
 public class Player extends watermelon.sim.Player {
-	static int distowall = 2;
-	static int distotree = 2;
-	static int distoseed = 1;
+	static double distowall = 2.1;
+	static double distotree = 2.2;
+	static double distoseed = 1.01;
 
 	public void init() {
 
 	}
 
-	static double distance(Point a, Point b) {
-		return Math.sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
+	static double distance(seed tmp, Pair pair) {
+		return Math.sqrt((tmp.x - pair.x) * (tmp.x - pair.x) + (tmp.y - pair.y) * (tmp.y - pair.y));
 	}
 
 	// Return: the next position
@@ -26,12 +26,12 @@ public class Player extends watermelon.sim.Player {
 	}
 
 	@Override
-	public ArrayList<seed> move(ArrayList<Point> treelist, int width, int length) {
+	public ArrayList<seed> move(ArrayList<Pair> treelist, double width, double length, double s) {
 		// TODO Auto-generated method stub
 
 		ArrayList<seed> seedlist = new ArrayList<seed>();
-		for (int i = distowall; i < width - distoseed; i = i + distoseed) {
-			for (int j = distowall; j < length - distoseed; j = j + distoseed) {
+		for (double i = distowall; i < width - distowall; i = i + distoseed) {
+			for (double j = distowall; j < length - distowall; j = j + distoseed) {
 				Random random = new Random();
 				seed tmp;
 				if (random.nextInt(2) == 0)

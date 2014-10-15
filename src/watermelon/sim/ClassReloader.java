@@ -19,7 +19,7 @@ class ClassReloader extends URLClassLoader {
 		try {
 			if ("watermelon.sim.Player".equals(name)
 					|| "watermelon.sim.seed".equals(name)
-					|| "watermelon.sim.Point".equals(name))
+					|| "watermelon.sim.Point".equals(name)||"watermelon.sim.Pair".equals(name))
 				return parent.loadClass(name);
 			else
 				return super.loadClass(name, resolve);
